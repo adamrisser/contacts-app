@@ -9,18 +9,16 @@ angular
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-    //$urlRouterProvider.otherwise('/members');
+    $urlRouterProvider.otherwise('/members');
 
     $stateProvider
       .state('members-list', {
         url: '/members',
+        controller: 'MembersCtrl',
         templateUrl: 'members/members-tpl.html',
-        controller: 'MembersCtrl'
-      })
-      // .state('state2', {
-      //   url: '/view2',
-      //   templateUrl: 'view2/view2.html',
-      //   controller: 'View2Ctrl'
-      // });
+        resolve: {
+          members: 'members'
+        },
+      });
 
   }]);

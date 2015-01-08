@@ -1,19 +1,22 @@
 'use strict';
 
-angular
-  .module('app.members', [])
-  .directive('memberDetails', function() {
+angular.module('app.members', [])
+
+  .directive('memberDetails', function () {
     return {
       restrict: 'AE',
       templateUrl: 'members/member-tpl.html'
     };
   })
-  .controller('MembersCtrl', ['$scope', '$http', function ($scope, $http) {
 
-    $http
+  .factory('members', ['$http', function ($http) {
+    return $http
       .get('data/contacts.json')
-      .success(function (data) {
-        $scope.members = data;
+      .then(function (response) {
+        return response.data;
       });
+  }])
 
-}]);
+  .controller('MembersCtrl', ['$scope', 'members', function ($scope, members) {
+    $scope.members = members;
+  }]);
