@@ -1,31 +1,26 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
-  'ui.router',
-  'myApp.view1',
-  'myApp.view2'
-]).
-config(function($stateProvider, $urlRouterProvider) {
+angular
+  .module('app', [
+    'ui.router',
+    'app.members',
+    'app.view2'
+  ])
+  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/view1');
+    //$urlRouterProvider.otherwise('/members');
 
-  $stateProvider
-    .state('state1', {
-      url: '/view1',
-      templateUrl: 'view1/view1.html',
-      controller: 'View1Ctrl' //,
-      // onEnter: function () {
-      //   debugger;
-      // },
-      // onExit: function () {
-      //   debugger;
-      // }
-    })
-    .state('state2', {
-      url: '/view2',
-      templateUrl: 'view2/view2.html',
-      controller: 'View2Ctrl' 
-    });
+    $stateProvider
+      .state('members-list', {
+        url: '/members',
+        templateUrl: 'members/members-tpl.html',
+        controller: 'MembersCtrl'
+      })
+      // .state('state2', {
+      //   url: '/view2',
+      //   templateUrl: 'view2/view2.html',
+      //   controller: 'View2Ctrl'
+      // });
 
-});
+  }]);
