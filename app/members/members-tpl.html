@@ -1,8 +1,7 @@
 <div class="container-fluid">
-
   <div class="row">
-    <div class="col-md-4">
-      <input class="form-control" type="text" ng-model="selected" typeahead-template-url="type-ahead-tpl.html" typeahead="member for member in members | filter:$viewValue | limitTo:10">
+    <div class="col-md-3">
+      <input class="form-control" type="text" ng-model="search.name" ng-keydown="reset()" placeholder="Filter by Name">
     </div>
 
     <div class="col-md-2">
@@ -12,19 +11,20 @@
       </select>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-2">
       <div class="btn-group">
-        <label class="btn btn-success" ng-model="limit" btn-radio="10">10</label>
-        <label class="btn btn-success" ng-model="limit" btn-radio="20">20</label>
-        <label class="btn btn-success" ng-model="limit" btn-radio="50">50</label>
+        <label class="btn btn-success" ng-model="search.limit" btn-radio="10">10</label>
+        <label class="btn btn-success" ng-model="search.limit" btn-radio="20">20</label>
+        <label class="btn btn-success" ng-model="search.limit" btn-radio="50">50</label>
       </div>
     </div>
   </div>
 
-  <ol>
-    <li ng-repeat="member in members | filter:{state: search.state} | orderBy: 'last_name' | limitTo:limit">
+  <ol start="{{((search.currentPage-1) * search.limit) + 1}}">
+    <li ng-repeat="member in filteredMembers = (members | filter:{state: search.state} | filter:byName | orderBy: 'last_name') | offset:(search.currentPage-1)*search.limit | limitTo:search.limit">
       <member-details />
     </li>
   </ol>
 
+  <pagination total-items="filteredMembers.length" items-per-page="search.limit" ng-model="search.currentPage" ng-change="pageChanged()"></pagination>
 </div>
