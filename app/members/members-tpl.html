@@ -1,5 +1,30 @@
-<ul>
-  <li ng-repeat="member in members">
-    <member-details />
-  </li>
-</ul>
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-4">
+      <input class="form-control" type="text" ng-model="selected" typeahead-template-url="type-ahead-tpl.html" typeahead="member for member in members | filter:$viewValue | limitTo:10">
+    </div>
+
+    <div class="col-md-2">
+      <select class="form-control btn btn-primary dropdown-toggle" ng-model="search.state">
+        <option value=""><a href="#">Filter by State</a></option>
+        <option ng-repeat="state in states" value="{{state}}"><a href="#">{{state}}</a></option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <div class="btn-group">
+        <label class="btn btn-success" ng-model="limit" btn-radio="10">10</label>
+        <label class="btn btn-success" ng-model="limit" btn-radio="20">20</label>
+        <label class="btn btn-success" ng-model="limit" btn-radio="50">50</label>
+      </div>
+    </div>
+  </div>
+
+  <ol>
+    <li ng-repeat="member in members | filter:{state: search.state} | orderBy: 'last_name' | limitTo:limit">
+      <member-details />
+    </li>
+  </ol>
+
+</div>
