@@ -2,15 +2,20 @@
 <html lang="en" ng-app="app">
 <head>
   <meta charset="utf-8" />
-  <title>Under Armour Members</title>
+  <title>Under Armour Members List</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css" />
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css" />
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="app.css" />
 </head>
-<body>
-  <ui-view />
+<body class="center-block">
+
+  <div class="main container-fluid">
+    <img src="/app/img/logo.png" class="logo" title="Under Armour" />
+    <ui-view />
+  </div>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
@@ -18,7 +23,5 @@
   <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
   <script src="app.js"></script>
   <script src="members/members-ctrl.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
 </body>
 </html>

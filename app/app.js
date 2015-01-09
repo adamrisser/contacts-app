@@ -5,8 +5,7 @@ angular
   .module('app', [
     'ui.router',
     'ui.bootstrap',
-    'app.members',
-    'app.view2'
+    'app.members'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
@@ -15,11 +14,10 @@ angular
     $stateProvider
       .state('members-list', {
         url: '/members',
-        controller: 'MembersCtrl',
+        controller: 'MembersController',
         templateUrl: 'members/members-tpl.html',
         resolve: {
           members: 'members'
-        },
+        }
       });
-
   }]);

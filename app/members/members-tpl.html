@@ -1,17 +1,17 @@
-<div class="container-fluid">
+<div class="col-md-12 members-cntr">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-sm-4">
       <input class="form-control" type="text" ng-model="search.name" ng-keydown="reset()" placeholder="Filter by Name">
     </div>
 
-    <div class="col-md-2">
+    <div class="col-sm-4">
       <select class="form-control btn btn-primary dropdown-toggle" ng-model="search.state">
         <option value=""><a href="#">Filter by State</a></option>
         <option ng-repeat="state in states" value="{{state}}"><a href="#">{{state}}</a></option>
       </select>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-sm-4">
       <div class="btn-group">
         <label class="btn btn-success" ng-model="search.limit" btn-radio="10">10</label>
         <label class="btn btn-success" ng-model="search.limit" btn-radio="20">20</label>
