@@ -22,7 +22,7 @@
 
   <ol start="{{((search.currentPage-1) * search.limit) + 1}}">
     <li ng-repeat="member in filteredMembers = (members | filter:{state: search.state} | filter:byName | orderBy: 'last_name') | offset:(search.currentPage-1)*search.limit | limitTo:search.limit">
-      <member-details />
+      <member-details-sm ng-click="openDetails(member)" />
     </li>
   </ol>
 

@@ -2,7 +2,14 @@
 
 angular.module('app.members', [])
 
-  .directive('memberDetails', function () {
+.directive('memberDetailsSm', function () {
+  return {
+    restrict: 'AE',
+    templateUrl: 'members/member-sm-tpl.html'
+  };
+})
+
+  .directive('memberDetailsLg', function () {
     return {
       restrict: 'AE',
       templateUrl: 'members/member-tpl.html'
@@ -23,7 +30,7 @@ angular.module('app.members', [])
     };
   })
 
-  .controller('MembersController', ['$scope', 'members', function ($scope, members) {
+  .controller('MembersController', ['$scope', '$modal', 'members', function ($scope, $modal, members) {
     $scope.members = members;
     $scope.states = ['AK','AL','AR','AZ','CA','CO','CT','DC','DE','FL','GA','GU','HI','IA','ID', 'IL','IN','KS','KY','LA','MA','MD','ME','MH','MI','MN','MO','MS','MT','NC','ND','NE','NH','NJ','NM','NV','NY', 'OH','OK','OR','PA','PR','PW','RI','SC','SD','TN','TX','UT','VA','VI','VT','WA','WI','WV','WY'];
 
@@ -46,5 +53,18 @@ angular.module('app.members', [])
     $scope.reset = function () {
       $scope.search.currentPage = 1;
     };
+
+    $scope.openDetails = function (member) {
+      $modal.open({
+        templateUrl: 'members/member-details-tpl.html',
+        controller: 'MemberDetailsController',
+        size: 'lg',
+        resolve: {
+          member: function () {
+            return member;
+          }
+        }
+      });
+    }
 
   }]);

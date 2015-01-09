@@ -5,7 +5,8 @@ angular
   .module('app', [
     'ui.router',
     'ui.bootstrap',
-    'app.members'
+    'app.members',
+    'app.memberDetails'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 

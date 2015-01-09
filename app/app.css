@@ -13,10 +13,9 @@ body {
 }
 
 ol {
-  margin-left: 10px;
-  padding-left: 0px;
+  margin-left:  10px;
+  padding-left: 25px;
   max-height: 525px;
-  list-style-position: inside;
   overflow: auto;
 }
 
@@ -34,6 +33,12 @@ li:hover {
   cursor: pointer;
 }
 
+li .member-name {
+  margin-bottom: 0;
+}
+
+
+
 .logo {
   position: absolute;
   z-index: 0;
@@ -44,4 +49,8 @@ li:hover {
 
 .members-cntr {
   padding: 10px 0;
+}
+
+.member-modal {
+  padding: 15px;
 }
